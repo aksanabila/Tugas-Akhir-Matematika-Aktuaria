@@ -58,9 +58,6 @@ def lanjut():
     print()
     input(PINK + "Tekan ENTER untuk kembali ke menu..." + RESET)
 
-# ======================================================
-# APLIKASI MATEMATIKA AKTUARIA
-# ======================================================
 
 # -------------------------------
 # 1. BUNGA SEDERHANA
