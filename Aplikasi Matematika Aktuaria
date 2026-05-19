@@ -1,0 +1,234 @@
+import math
+
+# ======================================================
+# APLIKASI MATEMATIKA AKTUARIA
+# ======================================================
+
+# -------------------------------
+# 1. BUNGA MAJEMUK
+# -------------------------------
+def bunga_majemuk():
+    print("\n=== BUNGA MAJEMUK ===")
+
+    P = float(input("Masukkan modal awal        : "))
+    i = float(input("Masukkan bunga (contoh 0.1): "))
+    n = int(input("Masukkan jumlah tahun      : "))
+
+    A = P * (1 + i) ** n
+
+    print("\nHASIL PERHITUNGAN")
+    print("Jumlah akhir = Rp", round(A, 2))
+
+
+# -------------------------------
+# 2. PRESENT VALUE
+# -------------------------------
+def present_value():
+    print("\n=== PRESENT VALUE ===")
+
+    FV = float(input("Masukkan Future Value      : "))
+    i = float(input("Masukkan bunga             : "))
+    n = int(input("Masukkan jumlah tahun      : "))
+
+    PV = FV / ((1 + i) ** n)
+
+    print("\nHASIL PERHITUNGAN")
+    print("Present Value = Rp", round(PV, 2))
+
+
+# -------------------------------
+# 3. ANUITAS PINJAMAN
+# -------------------------------
+def anuitas_pinjaman():
+    print("\n=== ANUITAS PINJAMAN ===")
+
+    pinjaman = float(input("Masukkan jumlah pinjaman : "))
+    i = float(input("Masukkan bunga           : "))
+    n = int(input("Masukkan lama pinjaman   : "))
+
+    an = (1 - (1 + i) ** (-n)) / i
+
+    R = pinjaman / an
+
+    total_bayar = R * n
+    total_bunga = total_bayar - pinjaman
+
+    print("\nHASIL PERHITUNGAN")
+    print("Cicilan per tahun = Rp", round(R, 2))
+    print("Total pembayaran  = Rp", round(total_bayar, 2))
+    print("Total bunga       = Rp", round(total_bunga, 2))
+
+
+# -------------------------------
+# 4. ANUITAS DUE
+# -------------------------------
+def anuitas_due():
+    print("\n=== ANUITAS DUE ===")
+
+    pembayaran = float(input("Masukkan pembayaran tahunan : "))
+    i = float(input("Masukkan bunga              : "))
+    n = int(input("Masukkan jumlah tahun       : "))
+
+    an_due = ((1 - (1 + i) ** (-n)) / i) * (1 + i)
+
+    PV = pembayaran * an_due
+
+    print("\nHASIL PERHITUNGAN")
+    print("Nilai sekarang anuitas due = Rp", round(PV, 2))
+
+
+# -------------------------------
+# 5. NPV PROYEK
+# -------------------------------
+def npv_proyek():
+    print("\n=== NET PRESENT VALUE (NPV) ===")
+
+    investasi_awal = float(input("Masukkan investasi awal : "))
+    i = float(input("Masukkan required return: "))
+
+    tahun = int(input("Masukkan jumlah tahun arus kas: "))
+
+    total_pv = 0
+
+    for t in range(1, tahun + 1):
+        cashflow = float(input(f"Arus kas tahun ke-{t}: "))
+
+        pv = cashflow / ((1 + i) ** t)
+
+        total_pv += pv
+
+    npv = total_pv - investasi_awal
+
+    print("\nHASIL PERHITUNGAN")
+    print("Total Present Value = Rp", round(total_pv, 2))
+    print("NPV                 = Rp", round(npv, 2))
+
+    if npv > 0:
+        print("Kesimpulan: Proyek LAYAK dijalankan")
+    elif npv < 0:
+        print("Kesimpulan: Proyek TIDAK layak")
+    else:
+        print("Kesimpulan: Proyek impas")
+
+
+# -------------------------------
+# 6. FORCE OF INTEREST
+# -------------------------------
+def force_interest():
+    print("\n=== FORCE OF INTEREST ===")
+
+    P = float(input("Masukkan modal awal : "))
+    delta = float(input("Masukkan force of interest: "))
+    t = float(input("Masukkan waktu (tahun): "))
+
+    A = P * math.exp(delta * t)
+
+    print("\nHASIL PERHITUNGAN")
+    print("Nilai akumulasi = Rp", round(A, 2))
+
+
+# -------------------------------
+# 7. DISKONTO
+# -------------------------------
+def diskonto():
+    print("\n=== DISKONTO ===")
+
+    FV = float(input("Masukkan future value : "))
+    d = float(input("Masukkan diskonto     : "))
+    t = float(input("Masukkan waktu        : "))
+
+    PV = FV * (1 - d * t)
+
+    print("\nHASIL PERHITUNGAN")
+    print("Present Value = Rp", round(PV, 2))
+
+
+# -------------------------------
+# 8. BUNGA SEDERHANA
+# -------------------------------
+def bunga_sederhana():
+    print("\n=== BUNGA SEDERHANA ===")
+
+    P = float(input("Masukkan modal awal : "))
+    i = float(input("Masukkan bunga      : "))
+    t = float(input("Masukkan waktu      : "))
+
+    A = P * (1 + i * t)
+
+    print("\nHASIL PERHITUNGAN")
+    print("Jumlah akhir = Rp", round(A, 2))
+
+
+# -------------------------------
+# 9. FUTURE VALUE
+# -------------------------------
+def future_value():
+    print("\n=== FUTURE VALUE ===")
+
+    PV = float(input("Masukkan present value : "))
+    i = float(input("Masukkan bunga         : "))
+    n = int(input("Masukkan jumlah tahun  : "))
+
+    FV = PV * ((1 + i) ** n)
+
+    print("\nHASIL PERHITUNGAN")
+    print("Future Value = Rp", round(FV, 2))
+
+
+# ======================================================
+# PROGRAM UTAMA
+# ======================================================
+
+while True:
+
+    print("\n")
+    print("===================================")
+    print("     APLIKASI MATEMATIKA AKTUARIA")
+    print("===================================")
+
+    print("1. Bunga Sederhana")
+    print("2. Bunga Majemuk")
+    print("3. Present Value")
+    print("4. Future Value")
+    print("5. Anuitas Pinjaman")
+    print("6. Anuitas Due")
+    print("7. Diskonto")
+    print("8. Force of Interest")
+    print("9. NPV Proyek")
+    print("10. Keluar")
+
+    pilihan = input("\nPilih menu (1-10): ")
+
+    if pilihan == "1":
+        bunga_sederhana()
+
+    elif pilihan == "2":
+        bunga_majemuk()
+
+    elif pilihan == "3":
+        present_value()
+
+    elif pilihan == "4":
+        future_value()
+
+    elif pilihan == "5":
+        anuitas_pinjaman()
+
+    elif pilihan == "6":
+        anuitas_due()
+
+    elif pilihan == "7":
+        diskonto()
+
+    elif pilihan == "8":
+        force_interest()
+
+    elif pilihan == "9":
+        npv_proyek()
+
+    elif pilihan == "10":
+        print("\nTerima kasih telah menggunakan program.")
+        break
+
+    else:
+        print("\nPilihan tidak valid!")
